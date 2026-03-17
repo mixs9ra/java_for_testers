@@ -5,6 +5,16 @@ import static java.lang.String.format;
 
 public record Triangle(double a, double b, double c) { // создал публичный класс треугольника с тремя свойствами
 
+    public Triangle { // конструктор рекорда
+        if (a<0 || b <0 || c<0) {
+            throw new IllegalArgumentException("Triangle side should be non-negative");
+        }
+        if (a+b < c || a+c < b || b+c <a) {
+            throw new IllegalArgumentException("The sum of any two sides must be at least as large as the third side");
+
+        }
+    }
+
     public static void printTriangle(Triangle t) { // параметр функции
         String text1 = format("Периметр треугольника со сторонами %f и %f и %f = %f", t.a(), t.b(), t.c(), t.trianglePerimeter());
         String text2 = format("Полупериметр треугольника со сторонами %f и %f и %f = %f", t.a(), t.b(), t.c(), t.triangleHalfPerimeter());
