@@ -30,5 +30,26 @@ public class TriangleTest {
             Assertions.fail();
         } catch (IllegalArgumentException exception) {}
     }
+
+    @Test // позитив треугольники равны
+    void testEquals() {
+        var t1 = new Triangle(3.0, 4.0, 5.0);
+        var t2 = new Triangle(5.0, 4.0, 3.0);
+        Assertions.assertEquals(t1, t2); // проверяет что значения равны
+    }
+
+    @Test // негатив треугольники не равны
+    void testNonEquals() {
+        var t1 = new Triangle(3.0, 4.0, 5.0);
+        var t2 = new Triangle(6.0, 4.0, 3.0);
+        Assertions.assertNotEquals(t1, t2); // проверяет что значения НЕ равны
+    }
+
+    @Test // проверка одинаковым треугольников
+    void testPass() {
+        var t1 = new Triangle(3.0, 4.0, 5.0);
+        var t2 = new Triangle(3.0, 4.0, 5.0);
+        Assertions.assertTrue(t1.equals(t2)); // сравнение если треугольники одинаковые
+    }
     }
 
